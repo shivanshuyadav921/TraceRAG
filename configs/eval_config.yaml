@@ -1,0 +1,65 @@
+# Evaluation Configuration
+# Benchmarks: GSM8K, MMLU, StrategyQA
+
+model:
+  name: "microsoft/Phi-3-mini-4k-instruct"
+  checkpoint: "./outputs/grpo/final"  # RL-tuned model
+  dtype: "bfloat16"
+  trust_remote_code: true
+
+evaluation:
+  benchmarks:
+    - name: "gsm8k"
+      num_fewshot: 8
+      method: "cot"  # Chain-of-thought
+      split: "test"
+      metric: "accuracy"
+      
+    - name: "mmlu"
+      num_fewshot: 5
+      method: "standard"
+      split: "test"
+      metric: "accuracy"
+      subjects: null  # All subjects
+      
+    - name: "strategyqa"
+      num_fewshot: 0
+      method: "cot"
+      split: "test"
+      metric: "accuracy"
+
+  generation:
+    max_new_tokens: 512
+    temperature: 0.0  # Greedy for evaluation
+    top_p: 1.0
+    do_sample: false
+    
+  batch_size: 16
+  num_workers: 4
+
+baselines:
+  # Run baselines for comparison
+  run_baseline: true
+  models:
+    - name: "microsoft/Phi-3-mini-4k-instruct"
+      label: "Phi-3-Mini (Base)"
+    - name: "./outputs/sft/final"
+      label: "Phi-3-Mini (SFT)"
+    - name: "./outputs/grpo/final"
+      label: "Phi-3-Mini (SFT + GRPO)"
+
+reporting:
+  output_dir: "./outputs/evaluation"
+  save_predictions: true
+  save_metrics: true
+  generate_plots: true
+  
+  # Latency measurement
+  measure_latency: true
+  latency_samples: 100
+  latency_warmup: 10
+
+wandb:
+  project: "slm-reasoning-rl"
+  run_name: "eval-phi3-mini"
+  enabled: true

@@ -1,0 +1,64 @@
+# SFT (Supervised Fine-Tuning) Configuration
+# Phase 1: Teach Chain-of-Thought reasoning format
+
+model:
+  name: "microsoft/Phi-3-mini-4k-instruct"
+  dtype: "bfloat16"
+  trust_remote_code: true
+
+lora:
+  enabled: true
+  rank: 64
+  alpha: 128
+  dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "k_proj"
+    - "v_proj"
+    - "o_proj"
+    - "gate_proj"
+    - "up_proj"
+    - "down_proj"
+
+training:
+  output_dir: "./outputs/sft"
+  num_epochs: 3
+  per_device_train_batch_size: 4
+  per_device_eval_batch_size: 8
+  gradient_accumulation_steps: 8
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  max_seq_length: 1024
+  logging_steps: 10
+  save_steps: 200
+  eval_steps: 200
+  save_total_limit: 3
+  fp16: false
+  bf16: true
+  gradient_checkpointing: true
+  dataloader_num_workers: 4
+
+data:
+  datasets:
+    - name: "gsm8k"
+      split: "train"
+      weight: 0.6
+    - name: "aqua_rat"
+      split: "train"
+      weight: 0.4
+  max_samples: null  # Use all samples
+  validation_split: 0.05
+  
+formatting:
+  system_prompt: "You are a helpful assistant that solves problems step by step. Show your reasoning in <think> tags and give your final answer in <answer> tags."
+  think_tag_open: "<think>"
+  think_tag_close: "</think>"
+  answer_tag_open: "<answer>"
+  answer_tag_close: "</answer>"
+
+wandb:
+  project: "slm-reasoning-rl"
+  run_name: "sft-phi3-mini"
+  enabled: true
