@@ -1,6 +1,5 @@
 # 🧠 Enhancing Reasoning in Small Language Models using Reinforcement Learning
 
-**Samsung ennovateX™ AX Hackathon 2026 — Problem Statement #06**
 
 ## Overview
 
