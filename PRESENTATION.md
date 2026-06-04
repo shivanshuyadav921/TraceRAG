@@ -1,14 +1,5 @@
-# 🎤 Presentation Slides Content
 
-## Slide 1: Title
-**Enhancing Reasoning in Small Language Models using Reinforcement Learning**
-- Team: [Your Team Name]
-- Samsung ennovateX™ AX Hackathon 2026
-- Problem Statement #06
-
----
-
-## Slide 2: The Problem (30 seconds)
+## Slide 1: The Problem (30 seconds)
 **Large models reason well. Small models don't. We fix that.**
 
 | | LLM (70B+) | SLM (≤7B) |
