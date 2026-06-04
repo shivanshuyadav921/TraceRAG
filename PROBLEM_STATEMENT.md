@@ -1,9 +1,4 @@
-# Problem Statement #06: Enhancing Reasoning in Small Language Models (SLMs) using Reinforcement Learning
-
-**Hackathon:** Samsung ennovateX™ AX Hackathon 2026  
-**Source:** https://ennovatex.io/ax-hackathon/
-
----
+Enhancing Reasoning in Small Language Models (SLMs) using Reinforcement Learning
 
 ## Problem Statement
 
