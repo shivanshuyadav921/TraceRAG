@@ -1,12 +1,3 @@
-# AX Hackathon Phase 1 — Blueprint Submission
-## (Content to fill in the official PPTX template)
-
-> **File to submit:** `AX_Hackathon_Phase1_Blueprint_Template.pptx`  
-> **Rename to:** `<your_team_name>_06_SLM_Reasoning_RL.pptx`  
-> **Email to:** ennovatex.io@samsung.com  
-> **Subject:** AX Hackathon Phase 1 Submission | 06 | <Your Team Name>
-
----
 
 ## Slide 1: Team Details
 
@@ -19,14 +10,11 @@
 | **Degree & Dept.** | [Fill] | [Fill] |
 | **Year** | [Fill] | [Fill] |
 
-**Team Name:** [Enter your team name]
-
----
 
 ## Slide 2: Problem Statement
 
 ### Selected Problem
-**#06: Enhancing Reasoning in Small Language Models (SLMs) using Reinforcement Learning**
+Enhancing Reasoning in Small Language Models (SLMs) using Reinforcement Learning**
 
 ### Problem Understanding
 Large Language Models demonstrate strong reasoning but are too expensive for on-device deployment. Small Language Models (≤7B params) are efficient but significantly lag in:
